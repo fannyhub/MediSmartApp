@@ -1,0 +1,29 @@
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" type="text/css" media="all" />
+
+
+<div class="ui-widget">
+  <label for="all_patients">Patient: </label>
+  <input id="all_patients">
+</div>
+<button type="submit" class="save btn button">Search</button>
+
+<script type="text/javascript">
+var all_patients = "{{ patients }}";
+var all_patients_str = [];
+for(var i=0; all_patients_str.push(all_patients[i].last_name);i++)
+//var all_patients = ["Baniak Janur", "Caan"];
+$(function() {
+  $("#all_patients").autocomplete({
+
+    source: all_patients_str,
+    minLength: 2,
+  });
+});
+</script>
+
+
+  
+
+
+
+

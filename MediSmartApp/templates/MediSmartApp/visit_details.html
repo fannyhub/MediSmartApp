@@ -1,0 +1,19 @@
+{% extends 'MediSmartApp/base.html' %}
+{% block classname %}class="base"{% endblock %}
+{% block top %}
+Visit details
+{% endblock %}
+
+{% block content %}
+
+
+
+<p>{{patient.first_name}} {{patient.last_name}}</p>
+<div>{{visit.visit_date}}</div>
+<span>{{visit.description}}</span>
+<a class="button" href="/MediSmartApp/{{patient.id}}/visit_edit/{{visit.id}}">Edit visit</a>
+<a class="button" href="/MediSmartApp/visit_delete/{{visit.id}}/{{patient.id}}">Delete visit</a>
+<a class="button" href="/MediSmartApp/visit_index">Visit index</a>
+<a class="button" href="/MediSmartApp/patient_index">Patient index</a>
+
+{% endblock %}

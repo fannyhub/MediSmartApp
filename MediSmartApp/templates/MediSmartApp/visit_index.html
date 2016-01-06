@@ -1,0 +1,23 @@
+{% extends 'MediSmartApp/base.html' %}
+{% block classname %}class="base"{% endblock %}
+{% block top %}
+Visit index
+
+{% endblock %}
+
+{% block content %}
+<a class="button" href="/MediSmartApp/">Home page</a>
+<a class="button" href="/MediSmartApp/patient_index">Patient index</a>
+{%if visits %}
+<table>
+{% for v in visits %}
+<tr><td>{{v.visit_date}}</td><td>{{v.patient}}</td> <td><a class="button" href="/MediSmartApp/visit_details/{{v.id}}/">Visit details</a></td></tr>
+{% endfor %}
+</table>
+{% else %}
+<p>No visits</p>
+{%endif %}
+
+
+
+{% endblock %}

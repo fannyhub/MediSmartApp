@@ -1,0 +1,33 @@
+{% extends 'MediSmartApp/base.html' %}
+{% block classname %}class="base"{% endblock %}
+{% block top %}
+Patient index
+
+{% endblock %}
+
+{% block content %}
+<a class="button" href="/MediSmartApp/patient_add">Add a patient</a>
+<a class="button" href="/MediSmartApp/">Home page</a>
+<a class="button" href="/MediSmartApp/visit_index">Visit index</a>
+
+{# {% include "MediSmartApp/patient_searcher.html" %} #}
+
+<script type="text/javascript" language="javascript" src="/static/functions.js"></script>
+<button id="all_patients_btn" class="button">Show all patients</button>
+<input id="search_form" placeholder="Type first or last name"> </input>
+<button id="search_btn" class="button">Search a patient</button>
+<table id="selected_patients"></table>
+{%if patients %}
+<table id="all_patients_table">
+{% for patient in patients %}
+<tr><td>{{patient.last_name}} {{patient.first_name}}</td> <td><a class="button" href="/MediSmartApp/patient_details/{{patient.id}}/">Details</a></td></tr>
+{% endfor %}
+</table>
+{% else %}
+<p>No patients</p>
+{%endif %}
+
+
+
+{% endblock %}
+
