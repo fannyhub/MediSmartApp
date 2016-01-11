@@ -10,7 +10,7 @@ body.home {
 }
 
 h1 {
-    font-family: 'Lobsterm';
+    font-family: 'Lobster';
     font-size: 400%;
     background-color: #999999;
     color: #ffffff;
@@ -23,7 +23,7 @@ a.base {
     background-color: #5575bc;
 }
 a.home {
-    font-family: 'Lobsterm';
+    font-family: 'Lobster';
     font-size: 400%;
     color: #271776;
     float: middle;
@@ -67,6 +67,6 @@ span {
 
 }
 
-#search_form {
+.form {
     height:2em;
 }
