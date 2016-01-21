@@ -13,13 +13,13 @@
 <a class="button" href="/MediSmartApp/">Homepage</a>
 <a class="button" href="/MediSmartApp/patient_index">Patient index</a>
 {% if visits %}
-<table>
+<table class="index">
 {%for v in visits%}
-    <tr>
-        <td> {{v.visit_date}} </td>
-        <td><a class="button" href="/MediSmartApp/visit_details/{{v.id}}">Visit details</a></td>
-        <td><a class="button" href="/MediSmartApp/visit_delete/{{v.id}}/{{patient.id}}">Delete visit</a></td>
-        <td><a class="button" href="/MediSmartApp/{{patient.id}}/visit_edit/{{v.id}}">Edit visit</a></td>
+    <tr class="index">
+        <td class="index"> {{v.visit_date}} </td>
+        <td class="index"><a class="button" href="/MediSmartApp/visit_details/{{v.id}}">Visit details</a></td>
+        <td class="index"><a class="button" href="/MediSmartApp/visit_delete/{{v.id}}/{{patient.id}}">Delete visit</a></td>
+        <td class="index"><a class="button" href="/MediSmartApp/{{patient.id}}/visit_edit/{{v.id}}">Edit visit</a></td>
     </tr>
 {% endfor %}
 </table>

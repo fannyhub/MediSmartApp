@@ -4,6 +4,7 @@ import datetime
 from django.http import HttpResponse
 from django.template import RequestContext, loader
 from django.shortcuts import render, redirect
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from .forms import PatientForm, VisitForm
 from .models import Patient, Visit
 
@@ -22,6 +23,14 @@ def patient_index(request):
 
 def visit_index(request):
     visits = Visit.objects.all().order_by('visit_date')
+    paginator = Paginator(visits, 5)
+    page = request.GET.get('page')
+    try:
+        visits = paginator.page(page)
+    except PageNotAnInteger:
+        visits = paginator.page(1)
+    except EmptyPage:
+        visits = paginator.page(paginator.num_pages)
     template = loader.get_template('MediSmartApp/visit_index.html')
     context = RequestContext(request, {
         'visits': visits,
