@@ -9,14 +9,37 @@ Visit index
 <a class="button" href="/MediSmartApp/">Home page</a>
 <a class="button" href="/MediSmartApp/patient_index">Patient index</a>
 {%if visits %}
-<table>
+<table class="index">
 {% for v in visits %}
-<tr><td>{{v.visit_date}}</td><td>{{v.patient}}</td> <td><a class="button" href="/MediSmartApp/visit_details/{{v.id}}/">Visit details</a></td></tr>
+<tr class="index"><td class="index">{{v.visit_date}}</td><td class="index">{{v.patient}}</td> <td class="index"><a class="button" href="/MediSmartApp/visit_details/{{v.id}}/">Visit details</a></td></tr>
 {% endfor %}
 </table>
 {% else %}
 <p>No visits</p>
 {%endif %}
+
+<div class="pagination">
+    <table class="step-links">
+        <tr>
+            <td class="pagination">
+        {% if visits.has_previous %}
+            <a class="button" href="?page={{ visits.previous_page_number }}">previous</a>
+        {% endif %}
+            </td>
+            <td>
+        <span class="current">
+            Page {{ visits.number }} of {{ visits.paginator.num_pages }}.
+        </span>
+            </td>
+
+        {% if visits.has_next %}
+            <td>
+            <a class="button" href="?page={{ visits.next_page_number }}">next</a>
+        {% endif %}
+            </td>
+        </tr>
+    </table>
+</div>
 
 
 
