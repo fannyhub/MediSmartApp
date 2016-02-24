@@ -6,6 +6,7 @@ from django.template import RequestContext, loader
 from django.shortcuts import render, redirect
 from .forms import PatientForm, VisitForm
 from .models import Patient, Visit
+from .db_backup import run_backup
 
 def home(request):
     template = loader.get_template('MediSmartApp/home.html')
@@ -48,12 +49,14 @@ def visit_details(request, visit_id):
     })
     return HttpResponse(template.render(context))
 
+
 def patient_edit(request, patient_id):
     patient = Patient.objects.get(pk=patient_id)
     if request.method == 'POST':
         form = PatientForm(request.POST, instance=patient)
         if form.is_valid():
             form.save()
+            run_backup()
             #return redirect('/MediSmartApp/patient_details/' + patient_id)
             return redirect('/MediSmartApp/patient_details/'+ patient_id)
     else:
@@ -61,6 +64,7 @@ def patient_edit(request, patient_id):
     return render(request, 'MediSmartApp/patient_edit.html', {'form': form, 'patient_id': patient_id})
 
     #return HttpResponse("You're editing patient %s." % patient_id)
+
 
 def visit_edit(request, patient_id, visit_id):
     visit = Visit.objects.get(pk=visit_id)
@@ -78,6 +82,7 @@ def patient_add(request):
         form = PatientForm(request.POST)
         if form.is_valid():
             form.save()
+            run_backup()
             return redirect('patient_index')
     else:
         form = PatientForm()

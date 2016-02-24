@@ -77,10 +77,19 @@ WSGI_APPLICATION = 'MediSmartProject.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        #'ENGINE': 'django.db.backends.sqlite3',
+        #'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'medi_db',
+        'USER': 'doctor',
+        'PASSWORD': 'doctor',
+        'HOST': 'localhost',
+        'PORT': '3306',
     }
+
 }
+
+#DATABASE_OPTIONS = {'use_unicode': False, 'charset': 'utf8'}
 
 
 # Internationalization
