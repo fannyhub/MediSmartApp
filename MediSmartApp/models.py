@@ -18,6 +18,6 @@ class Visit(models.Model):
     description = models.TextField()
 
     def __unicode__(self):
-        return str(self.visit_date) + ' ' + self.description 
+        return str(self.visit_date) + ' ' + str(self.patient.pesel) + ' ' + self.patient.last_name + ' ' + self.patient.first_name + ' ' + self.description
 
 
