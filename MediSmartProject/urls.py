@@ -18,6 +18,7 @@ from django.contrib import admin
 
 urlpatterns = [
     url(r'^MediSmartApp/', include('MediSmartApp.urls')),
+    url(r'^', include('MediSmartApp.urls')),
     url(r'^admin/', include(admin.site.urls)),
 ]
 
