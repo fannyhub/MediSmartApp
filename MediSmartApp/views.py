@@ -31,7 +31,7 @@ def run_backup(gen, f):
     today = datetime.datetime.now()
     patients = Patient.objects.all()
     if 'linux' in sys.platform:
-        backup_file = '/tmp/backup/BACKUP_{0}.txt'.format(f)
+        backup_file = '/tmp/BACKUP_{0}.txt'.format(f)
     elif 'win32' in sys.platform:
         backup_file = 'C:\\users\\hania\\Desktop\\BACKUP_{0}.txt'.format(f)
     else:
